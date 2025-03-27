@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        .header {
+            background-color: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .nav {
+            display: inline-block;
+        }
+        
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .nav a:hover {
+            color: #007bff;
+        }
+        
+        .login-container {
+            background-color: #fff;
+            width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        
+        .remember-me {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .login-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .login-btn {
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="#">Đăng nhập</a>
+            <a href="#">Đăng ký</a>
+        </div>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-title">Màn hình đăng nhập</div>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Nhập username">
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Ghi nhớ đăng nhập</label>
+            </div>
+            <div class="login-action">
+                <div class="forgot-password">
+                    <a href="#">Quên mật khẩu</a>
+                </div>
+                <button type="submit" class="login-btn">Đăng nhập</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="footer">
+        Lập trình web @01/2024
+    </div>
+</body>
+</html>

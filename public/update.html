@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .header, .footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #ddd;
+            position: fixed;
+            left: 0;
+        }
+        .header {
+            top: 0;
+        }
+        .footer {
+            bottom: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .button-container a {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        .container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 65%;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Home | Đăng nhập | Đăng ký
+    </div>
+    <div class="container">
+        <h2>Màn hình cập nhật</h2>
+        <form>
+            <input type="text" placeholder="Username" value="xxx" required>
+            <input type="password" placeholder="Mật khẩu" value="xxx" required>
+            <input type="password" placeholder="Nhập lại mật khẩu" value="xxx" required>
+            <input type="email" placeholder="Email" value="xxx" required>
+            <div class="button-container">
+                <a href="#">Đã có tài khoản</a>
+                <button type="submit">Đăng ký</button>
+            </div>
+        </form>
+    </div>
+    <div class="footer">
+        Lập trình web @01/2024
+    </div>
+</body>
+</html>
