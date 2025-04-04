@@ -69,24 +69,7 @@
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
-                                <label for="massv" class="form-label">massv</label>
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="massv" id="massv" class="form-control"
-                                        value="{{ $user->massv }}"
-                                        name="massv" required autofocus>
-                                    @if ($errors->has('massv'))
-                                    <span class="text-danger">{{ $errors->first('massv') }}</span>
-                                    @endif
-                                </div>
-                                <label for="address" class="form-label">address</label>
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="address" id="address" class="form-control"
-                                        value="{{ $user->address }}"
-                                        name="address" required autofocus>
-                                    @if ($errors->has('address'))
-                                    <span class="text-danger">{{ $errors->first('address') }}</span>
-                                    @endif
-                                </div>
+  
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="#" class="text-decoration-none">Đã có tài khoản</a>
                                     <button type="submit" class="btn btn-dark btn-block">Update</button>
