@@ -45,11 +45,6 @@
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
-
-                            
-
-                            
-
                             <div class="mb-3">
                                 <label for="password" class="form-label">Mật khẩu</label>
                                 <input type="password" placeholder="Password" id="password" class="form-control"
@@ -74,6 +69,24 @@
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
+                                <label for="massv" class="form-label">massv</label>
+                                <div class="form-group mb-3">
+                                    <input type="text" placeholder="massv" id="massv" class="form-control"
+                                        value="{{ $user->massv }}"
+                                        name="massv" required autofocus>
+                                    @if ($errors->has('massv'))
+                                    <span class="text-danger">{{ $errors->first('massv') }}</span>
+                                    @endif
+                                </div>
+                                <label for="address" class="form-label">address</label>
+                                <div class="form-group mb-3">
+                                    <input type="text" placeholder="address" id="address" class="form-control"
+                                        value="{{ $user->address }}"
+                                        name="address" required autofocus>
+                                    @if ($errors->has('address'))
+                                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                                    @endif
+                                </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="#" class="text-decoration-none">Đã có tài khoản</a>
                                     <button type="submit" class="btn btn-dark btn-block">Update</button>
@@ -83,6 +96,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Footer -->
         <div class="row border p-2 text-center mt-4">
             <div class="col">
@@ -90,7 +104,9 @@
             </div>
         </div>
     </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
