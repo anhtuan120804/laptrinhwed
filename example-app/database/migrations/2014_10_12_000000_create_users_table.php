@@ -9,21 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function definition()
+    public function up(): void
     {
-        $roles = ['admin', 'member', 'leader', 'manager'];
-    
-        return [
-            'name' => $this->faker->userName,
-            'email' => $this->faker->unique()->safeEmail,
-            'orders' => $this->faker->numberBetween(0, 50),
-            'role' => $this->faker->randomElement($roles),
-            'email_verified_at' => now(),
-            'password' => bcrypt('password'), // Mật khẩu mặc định
-            'remember_token' => Str::random(10),
-        ];
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
-    
 
     /**
      * Reverse the migrations.
