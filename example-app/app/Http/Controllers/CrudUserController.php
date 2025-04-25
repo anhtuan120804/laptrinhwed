@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Hash;
-use Session;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
-/**
- * CRUD User controller
- */
 class CrudUserController extends Controller
 {
 
@@ -19,7 +17,7 @@ class CrudUserController extends Controller
      */
     public function login()
     {
-        return view('crud_user.loginnew');
+        return view('crud_user.login');
     }
 
     /**
@@ -28,11 +26,11 @@ class CrudUserController extends Controller
     public function authUser(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('name', 'password');
+        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('list')
@@ -47,7 +45,7 @@ class CrudUserController extends Controller
      */
     public function createUser()
     {
-        return view('crud_user.register');
+        return view('crud_user.create');
     }
 
     /**
@@ -57,6 +55,8 @@ class CrudUserController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'like' => 'required',
+            'github' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
@@ -64,9 +64,9 @@ class CrudUserController extends Controller
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
+            'like' => $data['like'],
+            'github' => $data['github'],
             'email' => $data['email'],
-            'massv' => $data['massv'],
-            'address' => $data['address'],
             'password' => Hash::make($data['password'])
         ]);
 
@@ -81,18 +81,16 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
 
-        return view('crud_user.view', ['messi' => $user]);
+        return view('crud_user.read', ['messi' => $user]);
     }
 
     /**
      * Delete user by id
      */
-    public function deleteUser(Request $request)
+    public function deleteUser($id) 
     {
-        $user_id = $request->get('id');
-        $user = User::destroy($user_id);
-
-        return redirect("list")->withSuccess('You have signed-in');
+        User::destroy($id);
+        return redirect("list")->withSuccess('User deleted successfully');
     }
 
     /**
@@ -103,7 +101,7 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
 
-        return view('crud_user.updatenew', ['user' => $user]);
+        return view('crud_user.update', ['user' => $user]);
     }
 
     /**
@@ -113,36 +111,38 @@ class CrudUserController extends Controller
     {
         $input = $request->all();
 
-        if (!isset($input['id'])) {
-            return redirect()->back()->withErrors(['error' => 'Thiếu ID người dùng!']);
-        }
-
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,id,'.$input['id'],
+            'like' => 'required',
+            'github' => 'required',
+            'email' => 'required|email|unique:users,id,' . $input['id'],
             'password' => 'required|min:6',
         ]);
 
-       $user = User::find($input['id']);
-       $user->name = $input['name'];
-       $user->email = $input['email'];
-       $user->massv = $input['massv'];
-       $user->address = $input['address'];
-       $user->password = $input['password'];
-       $user->save();
+        $user = User::find($input['id']);
+        $user->name = $input['name'];
+        $user->like = $input['like'];
+        $user->github = $input['github'];
+        $user->email = $input['email'];
+        $user->password = $input['password'];
+        $user->save();
 
         return redirect("list")->withSuccess('You have signed-in');
     }
-
 
     /**
      * List of users
      */
     public function listUser()
     {
+        //        $users = [
+        //                'users' => User::all()
+        //        ];
+        //        return view('crud_user.ronaldo', $users);
+
         if (Auth::check()) {
-            $users = User::all();
-            return view('crud_user.listnew', ['users' => $users]);
+            $users = User::with('roles')->paginate(10);
+            return view('crud_user.list', ['users' => $users]);
         }
 
         return redirect("login")->withSuccess('You are not allowed to access');
